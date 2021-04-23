@@ -1,0 +1,43 @@
+CREATE TABLE `ft8adif` (
+  `adif_id` int NOT NULL AUTO_INCREMENT,
+  `rawadif` text NOT NULL,
+  PRIMARY KEY (`adif_id`),
+  UNIQUE KEY `adif_id_UNIQUE` (`adif_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=1873 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+CREATE TABLE `ft8log` (
+  `qso_rec` int NOT NULL AUTO_INCREMENT,
+  `call` varchar(8) NOT NULL COMMENT 'Contact Call Sign',
+  `gridsquare` varchar(8) DEFAULT NULL,
+  `mode` varchar(6) NOT NULL DEFAULT 'ft8' COMMENT 'Contact Mode',
+  `rst_sent` tinytext NOT NULL COMMENT 'RST Sent',
+  `rst_rcvd` tinytext NOT NULL COMMENT 'RST Recived',
+  `qso_date` date NOT NULL COMMENT 'QSO Date',
+  `time_on` time DEFAULT NULL,
+  `qso_date_off` date DEFAULT NULL COMMENT 'QSO End Date',
+  `time_off` time DEFAULT NULL COMMENT 'QSO End Time',
+  `band` varchar(6) DEFAULT NULL COMMENT 'Band',
+  `freq` varchar(10) DEFAULT NULL COMMENT 'Frequency',
+  `station_callsign` varchar(8) NOT NULL COMMENT 'Station Callsign',
+  `my_gridsquare` varchar(8) DEFAULT NULL,
+  `tx_pwr` varchar(5) NOT NULL DEFAULT '50',
+  `comments` tinytext,
+  `name` varchar(45) DEFAULT NULL,
+  `operator_call` varchar(8) DEFAULT NULL,
+  `propmode` varchar(15) DEFAULT NULL,
+  `is_dx` tinyint(1) NOT NULL DEFAULT '0' COMMENT 'DX Point',
+  `is_event` tinyint NOT NULL DEFAULT '0' COMMENT 'Event Station Point',
+  `is_qrp` tinyint(1) NOT NULL DEFAULT '0',
+  `qso_score` int NOT NULL DEFAULT '0',
+  UNIQUE KEY `idx_qso_rec` (`qso_rec`),
+  UNIQUE KEY `idx_nodups` (`call`,`qso_date`,`band`,`station_callsign`,`operator_call`)
+) ENGINE=MyISAM AUTO_INCREMENT=1718 DEFAULT CHARSET=latin1;
+CREATE TABLE `ft8off_date` (
+  `contest_num` int NOT NULL AUTO_INCREMENT COMMENT 'Contest Number',
+  `contest_date` date NOT NULL COMMENT 'Contest date',
+  `start_time` time(6) NOT NULL COMMENT 'Contest Start Time',
+  `contest_end_date` date NOT NULL,
+  `end_time` time(6) NOT NULL COMMENT 'Contest End Time',
+  PRIMARY KEY (`contest_num`),
+  UNIQUE KEY `idx_contest_num` (`contest_num`) USING BTREE
+) ENGINE=MyISAM AUTO_INCREMENT=14 DEFAULT CHARSET=latin1;
