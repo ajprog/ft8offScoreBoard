@@ -31,7 +31,7 @@ function ADIFParser($adif)
 				if(strpos($current_adif, "<eoh>") !== false) $processing = true;
 			}
 		}
-		if (str_ends_with($current_adif, "<eor>"))
+		if (strlen($current_adif) >= 5 && substr( $current_adif, -5 ) === "<eor>")
 	        {
    		         if(!empty($adif_line)) $parsed_adif[] = $adif_line;
 		         $adif_line = array();

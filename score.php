@@ -21,12 +21,12 @@ date_add($date,date_interval_create_from_date_string("7 days"));
 $conteststart=$contestdate." ".$conteststart_time;
 $contestend=$contestenddate." ".$contest_end_time;
 
-$timetostart=strtotime($conteststart)-strtotime(now);
+$timetostart=strtotime($conteststart)-strtotime(now());
 $timetostarthr=floor(($timetostart % 86400)/3600);
 $timetostartmin=floor(($timetostart % 3600)/60);
 $timetostartsec=($timetostart % 60);
 
-$timerem=strtotime($contestend)-strtotime(now);
+$timerem=strtotime($contestend)-strtotime(now());
 $timeremmin=floor(($timerem % 3600)/60);
 $timeremsec=($timerem % 60);
 

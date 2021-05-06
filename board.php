@@ -25,13 +25,13 @@
    <div id=body>
         <section class='content-wrapper featured clear-fix'> 
                <div id="div_score">
-               <?php include_once 'score_bu.php';?>
+               <?php include_once 'score.html';?>
                </div>
                <script type='text/javascript'>
                 var table = $('#div_score');
                 // refresh every 5 seconds
                 var refresher = setInterval(function(){
-                table.load("score_bu.php");
+                table.load("score.html");
                 }, 1000);
                 //setTimeout(function() {
                 //  clearInterval(refresher);
